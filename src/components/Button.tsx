@@ -11,7 +11,12 @@ type ButtonProps = {
   className?: string;
 };
 
-const Button = ({ linkField, label, showIcon, className }: ButtonProps) => {
+const Button = ({
+  linkField,
+  label,
+  showIcon = true,
+  className,
+}: ButtonProps) => {
   return (
     <PrismicNextLink
       field={linkField}
