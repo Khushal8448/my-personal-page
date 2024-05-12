@@ -1,4 +1,5 @@
 import { Content } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 
 /**
@@ -15,8 +16,9 @@ const ProjectLink = ({ slice }: ProjectLinkProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for project_link (variation: {slice.variation})
-      Slices
+      <PrismicNextLink field={slice.primary.project_link}>
+        Project Live Link
+      </PrismicNextLink>
     </section>
   );
 };
