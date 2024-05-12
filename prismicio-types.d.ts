@@ -272,6 +272,17 @@ interface ProjectDocumentData {
   hover_image: prismic.ImageField<never>;
 
   /**
+   * ProjectLink field in *Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.projectlink
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  projectlink: prismic.LinkField;
+
+  /**
    * Slice Zone field in *Project*
    *
    * - **Field Type**: Slice Zone
