@@ -232,7 +232,10 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type ProjectDocumentDataSlicesSlice =
+  | ProjectLinkSlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Project documents
@@ -870,6 +873,51 @@ export type ImageBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ProjectLink → Primary*
+ */
+export interface ProjectLinkSliceDefaultPrimary {
+  /**
+   * Project Link field in *ProjectLink → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_link.primary.project_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  project_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for ProjectLink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectLinkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectLinkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectLink*
+ */
+type ProjectLinkSliceVariation = ProjectLinkSliceDefault;
+
+/**
+ * ProjectLink Shared Slice
+ *
+ * - **API ID**: `project_link`
+ * - **Description**: ProjectLink
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectLinkSlice = prismic.SharedSlice<
+  "project_link",
+  ProjectLinkSliceVariation
+>;
+
+/**
  * Primary content in *TechList → Primary*
  */
 export interface TechListSliceDefaultPrimary {
@@ -1031,6 +1079,10 @@ declare module "@prismicio/client" {
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
+      ProjectLinkSlice,
+      ProjectLinkSliceDefaultPrimary,
+      ProjectLinkSliceVariation,
+      ProjectLinkSliceDefault,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,
