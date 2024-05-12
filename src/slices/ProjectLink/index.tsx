@@ -22,11 +22,8 @@ const ProjectLink = ({ slice }: ProjectLinkProps): JSX.Element => {
         linkField={slice.primary.project_link}
         showIcon
       />
-      Project Live Link
     </section>
   );
 };
 
 export default ProjectLink;
-
-// update
