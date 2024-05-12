@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
@@ -16,9 +17,12 @@ const ProjectLink = ({ slice }: ProjectLinkProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <PrismicNextLink field={slice.primary.project_link}>
-        Project Live Link
-      </PrismicNextLink>
+      <Button
+        label="Project Live Link"
+        linkField={slice.primary.project_link}
+        showIcon
+      />
+      Project Live Link
     </section>
   );
 };
